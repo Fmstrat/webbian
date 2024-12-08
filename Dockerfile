@@ -26,7 +26,9 @@ RUN \
         python3-numpy \
         xdotool \
         git \
-        firefox-esr; \
+        xclip \
+        firefox-esr \
+        chromium; \
     apt-get clean -y;
 
 RUN \    
