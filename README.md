@@ -5,3 +5,5 @@ A web accessible Virtual Machine powered by Docker, Debian, and noVNC. Webbian a
 ![](images/webbian.png)
 
 Read the docs at: https://nowsci.com/webbian
+
+😊
