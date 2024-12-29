@@ -46,11 +46,16 @@ dbus-daemon --system
 touch ~/.Xauthority
 touch ~/.Xresources
 
-vncserver -localhost no :0 -geometry $GEOMETRY -depth 24
+XSTARTUP_CMD=""
+if [ -n "${XSTARTUP}" ]; then
+    XSTARTUP_CMD="-xstartup ${XSTARTUP}"
+fi
+
+vncserver -localhost no :0 -geometry $GEOMETRY -depth 24 ${XSTARTUP_CMD}
 
 sleep 3
 xauth generate :0 . trusted 
 xauth add ${HOST}:0 . $(xxd -l 16 -p /dev/urandom)
 xauth list 
 
-./utils/novnc_proxy --vnc localhost:5900 --listen 4900
+./utils/novnc_proxy --vnc localhost:5900 --listen 4900 --file-only
